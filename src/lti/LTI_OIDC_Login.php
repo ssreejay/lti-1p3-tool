@@ -146,10 +146,13 @@ class LTI_OIDC_Login
         echo "
         <script>
             function storeLtiState() {
+                const oidcState = " . json_encode($state) . ";
+                const storageKey = 'MO_LTI_STATE_' + oidcState;
+
                 const msg = {
                     subject: 'lti.put_data',
-                    key: 'MO_LTI_STATE',
-                    value: " . json_encode($state) . ",
+                    key: storageKey,
+                    value: oidcState,
                     message_id: 'MO_LTI'
                 };
         
