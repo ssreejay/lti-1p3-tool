@@ -366,14 +366,13 @@ class LTI_Message_Launch
                 (function() {
                     var expectedState = " . json_encode($expectedState) . ";
                     var redirectState = " . json_encode($state) . ";
+                    var storageKey = 'MO_LTI_STATE_' + expectedState;
         
                     console.log('Expected state:', expectedState);
         
-                    const getMessageId = crypto.randomUUID(); // Generate new unique ID for get_data
-        
                     const message = {
                         subject: 'lti.get_data',
-                        key: 'MO_LTI_STATE',
+                        key: storageKey,
                         message_id: 'MO_LTI'
                     };
         
